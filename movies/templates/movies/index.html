@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Movies{% endblock title %}
+
+{% block content %}
+    <br>
+    <ul class="list-group style="width: 90%; margin: 0 auto;"">
+        {% for movie in movies %}
+        <li class="list-group-item bg-dark text-white border-secondary">
+            <a href="{% url 'movies:detail' movie.id %}" class="text-white text-decoration-none d-block w-100">
+                {{ movie.title }} - {{ movie.publication_year }}
+            </a>
+        </li>
+        {% empty %}
+        <li class="list-group-item bg-dark text-muted border-secondary">No hay películas registradas.</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}
